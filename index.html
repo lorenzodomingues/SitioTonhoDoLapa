@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sítio Tonho do Lapa — À Venda | Moeda, Minas Gerais</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:wght@400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--verde:#2b4a2b;--verde2:#3d6b3d;--verde-cl:#7aaa6a;--terra:#7a4f2f;--areia:#e8dcc5;--creme:#f6f1e8;--branco:#fdfaf4;--dourado:#c8a84b;--texto:#261e13}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Lora',serif;background:var(--branco);color:var(--texto);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(20,35,15,0.88);backdrop-filter:blur(10px)}
+.nav-logo{font-family:'Playfair Display',serif;color:var(--dourado);font-size:1.1rem;letter-spacing:0.05em;text-decoration:none}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-family:'Montserrat',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover{color:var(--dourado)}
+.nav-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:4px;flex-direction:column;gap:5px}
+.nav-menu-btn span{display:block;width:24px;height:2px;background:white;transition:all 0.3s;transform-origin:center}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:flex-end;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%;filter:brightness(0.55)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,25,10,0.92) 0%,rgba(15,25,10,0.25) 55%,transparent 100%)}
+.hero-content{position:relative;padding:4rem 4rem 5rem;color:white;max-width:780px}
+.hero-badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:0.65rem;font-weight:500;letter-spacing:0.4em;text-transform:uppercase;color:var(--dourado);border:1px solid var(--dourado);padding:0.45rem 1.2rem;margin-bottom:1.5rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:700;line-height:1.0;margin-bottom:1rem}
+.hero h1 em{font-style:italic;color:var(--verde-cl)}
+.hero-desc{font-size:1.1rem;line-height:1.8;opacity:0.9;margin-bottom:2rem;max-width:560px}
+.btn-gold{display:inline-block;background:var(--dourado);color:var(--verde);font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;padding:1rem 2.2rem;transition:all 0.3s}
+.btn-gold:hover{background:white;transform:translateY(-2px)}
+.btn-outline{display:inline-block;background:transparent;color:white;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;padding:1rem 2.2rem;border:1px solid rgba(255,255,255,0.5);transition:all 0.3s;margin-left:1rem}
+.btn-outline:hover{border-color:white;background:rgba(255,255,255,0.1)}
+
+/* STATS */
+.stats{background:var(--verde);display:flex;flex-wrap:wrap}
+.stat{flex:1;min-width:100px;padding:1.8rem 1rem;text-align:center;border-right:1px solid rgba(255,255,255,0.1)}
+.stat:last-child{border-right:none}
+.stat-n{font-family:'Playfair Display',serif;font-size:2rem;color:var(--dourado);display:block;font-weight:700}
+.stat-l{font-family:'Montserrat',sans-serif;font-size:0.58rem;color:rgba(255,255,255,0.6);letter-spacing:0.15em;text-transform:uppercase;display:block;margin-top:0.3rem}
+
+/* SECTIONS */
+section{padding:5rem 2rem}
+.container{max-width:1140px;margin:0 auto}
+.label{font-family:'Montserrat',sans-serif;font-size:0.62rem;font-weight:600;letter-spacing:0.4em;text-transform:uppercase;color:var(--verde2);margin-bottom:0.8rem}
+.title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.15;margin-bottom:1.2rem}
+.title em{font-style:italic;color:var(--verde2)}
+.bar{width:50px;height:2px;background:var(--dourado);margin-bottom:2rem}
+.body-text p{font-size:1.05rem;line-height:1.9;color:#4a3c28;margin-bottom:1.2rem}
+
+/* INTRO */
+.intro{background:var(--creme)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.img-frame{position:relative;height:460px}
+.img-frame img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1;display:block}
+.img-frame::before{content:'';position:absolute;inset:-10px -10px 10px 10px;border:2px solid var(--dourado);z-index:0}
+
+/* GALLERY */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.g-item{overflow:hidden;position:relative;cursor:pointer;min-height:260px}
+.g-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s}
+.g-item:hover img{transform:scale(1.05)}
+.g-item.span2{grid-column:span 2}
+.g-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(15,25,10,0.78));color:white;padding:1.5rem 1rem 0.8rem;font-family:'Montserrat',sans-serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;opacity:0;transition:opacity 0.3s}
+.g-item:hover .g-cap{opacity:1}
+
+/* VIDEO */
+.video-wrap{position:relative;overflow:hidden;background:#000;aspect-ratio:16/9;margin-bottom:10px}
+.video-wrap video{width:100%;height:100%;object-fit:cover;display:block}
+
+/* CASA */
+.casa{background:var(--branco)}
+.casa-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-bottom:3rem}
+.casa-info ul{list-style:none;margin-top:1.5rem}
+.casa-info li{padding:0.7rem 0;border-bottom:1px solid #e0d8cc;font-size:1rem;display:flex;align-items:center;gap:0.8rem;color:#4a3c28}
+.casa-info li::before{content:'✦';color:var(--dourado);font-size:0.6rem;flex-shrink:0}
+
+/* CHALE */
+.chale{background:var(--verde);color:var(--areia)}
+.chale .label{color:var(--verde-cl)}
+.chale .title{color:white}
+.chale .title em{color:var(--verde-cl)}
+.chale .bar{background:var(--dourado)}
+.chale-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:1rem}
+.chale-text p{font-size:1.05rem;line-height:1.85;opacity:0.88;margin-bottom:1.2rem}
+.floor-card{background:rgba(255,255,255,0.07);border-left:3px solid var(--dourado);padding:1.2rem 1.5rem;margin-bottom:1rem}
+.floor-card h4{font-family:'Playfair Display',serif;font-size:1rem;color:var(--dourado);margin-bottom:0.4rem}
+.floor-card p{font-size:0.9rem;opacity:0.8;line-height:1.6}
+.chale-feat-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:240px 240px;gap:10px}
+.chale-feat-grid .g-item{min-height:0}
+.chale-feat-grid .g-item.big{grid-row:span 2}
+.chale-full-gallery{margin-top:3rem}
+
+/* LAZER */
+.lazer{background:var(--branco)}
+.lazer-intro{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:4rem}
+.lazer-features{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:3rem}
+.feat-card{background:var(--creme);padding:2rem 1.5rem;border-bottom:3px solid var(--dourado)}
+.feat-icon{font-size:2.2rem;margin-bottom:1rem;display:block}
+.feat-card h4{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--verde);margin-bottom:0.5rem}
+.feat-card p{font-size:0.9rem;line-height:1.65;color:#4a3c28}
+.lazer-photos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lazer-photos .g-item{min-height:380px}
+
+/* NATUREZA */
+.natureza{background:var(--creme)}
+.natureza .label{color:var(--verde2)}
+.nat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:3rem}
+.nat-item{overflow:hidden;position:relative;min-height:280px;cursor:pointer}
+.nat-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s}
+.nat-item:hover img{transform:scale(1.06)}
+.nat-item.tall{min-height:400px}
+.nat-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(15,25,10,0.8));color:white;padding:2rem 1.2rem 1rem;font-family:'Montserrat',sans-serif;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase}
+
+/* CONTATO */
+.contato{background:var(--areia);text-align:center}
+.contato-card{max-width:540px;margin:3rem auto 0;background:var(--verde);color:white;padding:3rem}
+.contato-card h3{font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:1rem}
+.contato-card p{font-size:1rem;opacity:0.8;line-height:1.7;margin-bottom:2rem}
+.contato .bar{margin:1rem auto 0}
+
+footer{background:#131f13;color:rgba(255,255,255,0.35);text-align:center;padding:2rem;font-family:'Montserrat',sans-serif;font-size:0.65rem;letter-spacing:0.1em}
+
+/* LIGHTBOX */
+#lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.96);align-items:center;justify-content:center}
+#lightbox.active{display:flex}
+#lb-img{max-width:90vw;max-height:88vh;object-fit:contain;display:block;user-select:none}
+#lb-close{position:absolute;top:1.2rem;right:1.8rem;color:white;font-size:2.2rem;cursor:pointer;background:none;border:none;opacity:0.6;line-height:1;padding:0.5rem}
+#lb-close:hover{opacity:1}
+#lb-prev,#lb-next{position:absolute;top:50%;transform:translateY(-50%);color:white;font-size:3rem;cursor:pointer;background:none;border:none;opacity:0.55;padding:1rem;line-height:1}
+#lb-prev:hover,#lb-next:hover{opacity:1}
+#lb-prev{left:0.5rem}
+#lb-next{right:0.5rem}
+#lb-counter{position:absolute;bottom:1.2rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.5);font-family:'Montserrat',sans-serif;font-size:0.72rem;letter-spacing:0.25em}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .lazer-features{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(20,35,15,0.98);flex-direction:column;padding:1.5rem 2rem 2rem;gap:1.2rem}
+  .nav-links.open{display:flex}
+  .nav-menu-btn{display:flex}
+  .hero-content{padding:2rem 1.5rem 4rem}
+  .two-col,.casa-header,.chale-grid,.lazer-intro{grid-template-columns:1fr!important;gap:2rem}
+  .img-frame{height:280px}
+  .gallery{grid-template-columns:1fr 1fr}
+  .g-item.span2{grid-column:span 1}
+  .g-item{min-height:200px}
+  .nat-grid{grid-template-columns:1fr 1fr}
+  .lazer-photos{grid-template-columns:1fr}
+  .lazer-photos .g-item{min-height:280px}
+  .stat{min-width:80px;padding:1.2rem 0.5rem}
+  .stat-n{font-size:1.5rem}
+  .btn-outline{margin-left:0;margin-top:0.8rem;display:block;text-align:center}
+  .chale-feat-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .chale-feat-grid .g-item.big{grid-row:span 1}
+  #lb-prev{left:0}
+  #lb-next{right:0}
+}
+@media(max-width:520px){
+  .lazer-features{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr}
+  .nat-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Sítio Tonho do Lapa</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#casa">Casa Principal</a></li>
+    <li><a href="#chale">Chalé</a></li>
+    <li><a href="#lazer">Lazer</a></li>
+    <li><a href="#natureza">Natureza</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <button class="nav-menu-btn" id="menuBtn" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section class="hero">
+  <img src="fotos/natureza/IMG_6631.jpg" alt="Sítio Tonho do Lapa — Vista da propriedade" loading="eager">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Propriedade Rural · Moeda, Minas Gerais</div>
+    <h1>Sítio <em>Tonho</em><br>do Lapa</h1>
+    <p class="hero-desc">Uma propriedade completa com duas estruturas independentes, piscina, lagoinha natural, campo de futebol, churrasqueira e jardins cultivados com décadas de carinho nas montanhas mineiras.</p>
+    <a href="#contato" class="btn-gold">Solicitar Informações</a>
+    <a href="#casa" class="btn-outline">Ver Detalhes</a>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><span class="stat-n">2</span><span class="stat-l">Estruturas</span></div>
+  <div class="stat"><span class="stat-n">14+</span><span class="stat-l">Camas</span></div>
+  <div class="stat"><span class="stat-n">3</span><span class="stat-l">Andares Chalé</span></div>
+  <div class="stat"><span class="stat-n">1</span><span class="stat-l">Piscina</span></div>
+  <div class="stat"><span class="stat-n">1</span><span class="stat-l">Lagoinha</span></div>
+  <div class="stat"><span class="stat-n">⚽</span><span class="stat-l">Campo Futebol</span></div>
+  <div class="stat"><span class="stat-n">🎱</span><span class="stat-l">Sinuca Prof.</span></div>
+</div>
+
+<section class="intro">
+  <div class="container">
+    <div class="two-col">
+      <div class="body-text">
+        <p class="label">Sobre o Sítio</p>
+        <h2 class="title">Um refúgio completo<br>na <em>natureza mineira</em></h2>
+        <div class="bar"></div>
+        <p>O Sítio Tonho do Lapa é uma propriedade rural de rara beleza em Moeda, Minas Gerais, com dois conjuntos de construções completamente independentes: a <strong>Casa Principal</strong> e o <strong>Chalé de 3 andares</strong>.</p>
+        <p>Os jardins, cultivados com carinho ao longo de décadas, apresentam buganvílias, azaléias, flamboyants e palmeiras. Uma lagoinha natural completa o cenário — ideal para quem busca contato genuíno com a natureza.</p>
+        <p>Potencial enorme para pousada rural, espaço para eventos, retiros ou refúgio familiar de alto padrão. Disponível para <strong>venda, aluguel ou estadia</strong>.</p>
+      </div>
+      <div class="img-frame">
+        <img src="fotos/natureza/IMG_6652.jpg" alt="Vista panorâmica do sítio" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CASA PRINCIPAL ==================== -->
+<section class="casa" id="casa">
+  <div class="container">
+    <div class="casa-header">
+      <div>
+        <p class="label">Estrutura 1</p>
+        <h2 class="title">Casa <em>Principal</em></h2>
+        <div class="bar"></div>
+        <p style="font-size:1.05rem;line-height:1.85;color:#4a3c28">Construída em tijolo aparente com teto de madeira, a casa principal combina charme rústico com conforto moderno. Salas amplas, cozinha equipada, lareira e ambientes que convidam ao descanso e à convivência em família.</p>
+      </div>
+      <div class="casa-info">
+        <ul>
+          <li>2 quartos com ar-condicionado e banheiro privativo</li>
+          <li>Sala com lareira, sofás e TV</li>
+          <li>Sala de sinuca profissional</li>
+          <li>Cozinha completa com granito e bancada em L</li>
+          <li>Varanda envidraçada com vista para o jardim</li>
+          <li>2 banheiros no térreo</li>
+          <li>Bar e adega integrados</li>
+        </ul>
+      </div>
+    </div>
+    <div class="video-wrap">
+      <video controls poster="fotos/casa/27891e2c-9293-4fab-97f8-33c7d47b07c4.jpg" preload="none">
+        <source src="fotos/casa/IMG_6440.MOV" type="video/mp4">
+        <source src="fotos/casa/IMG_6440.MOV" type="video/quicktime">
+      </video>
+    </div>
+    <div class="gallery">
+      <div class="g-item span2" onclick="openLightbox('casa',0)">
+        <img src="fotos/casa/27891e2c-9293-4fab-97f8-33c7d47b07c4.jpg" alt="Casa Principal" loading="lazy">
+        <div class="g-cap">Casa Principal</div>
+      </div>
+      <div class="g-item" onclick="openLightbox('casa',1)">
+        <img src="fotos/casa/347c3e5c-0756-4567-a1e3-b0bce8b9500b.jpg" alt="Casa Principal" loading="lazy">
+        <div class="g-cap">Área Interna</div>
+      </div>
+      <div class="g-item" onclick="openLightbox('casa',2)">
+        <img src="fotos/casa/34d18f3a-796e-4ab5-a4f6-a532975fc387.jpg" alt="Casa Principal" loading="lazy">
+        <div class="g-cap">Sala</div>
+      </div>
+      <div class="g-item" onclick="openLightbox('casa',3)">
+        <img src="fotos/casa/4aba32c0-3d16-46b3-be0d-e90460c7222f.jpg" alt="Casa Principal" loading="lazy">
+        <div class="g-cap">Ambiente</div>
+      </div>
+      <div class="g-item span2" onclick="openLightbox('casa',4)">
+        <img src="fotos/casa/7fb038b5-606e-47d9-a42d-9f3ad19a27b6.jpg" alt="Casa Principal" loading="lazy">
+        <div class="g-cap">Vista</div>
+      </div>
+      <div class="g-item" onclick="openLightbox('casa',5)">
+        <img src="fotos/casa/8cc6f511-0796-4f9f-8081-8ea33dfc2d1a.jpg" alt="Casa Principal" loading="lazy">
+        <div class="g-cap">Detalhes</div>
+      </div>
+      <div class="g-item" onclick="openLightbox('casa',6)">
+        <img src="fotos/casa/b07e9710-44c1-43a6-923f-9487afc82928.jpg" alt="Casa Principal" loading="lazy">
+        <div class="g-cap">Ambiente</div>
+      </div>
+      <div class="g-item" onclick="openLightbox('casa',7)">
+        <img src="fotos/casa/b25126ce-bdc7-4189-a93b-7c65cea3f5a0.jpg" alt="Casa Principal" loading="lazy">
+        <div class="g-cap">Cozinha</div>
+      </div>
+      <div class="g-item span2" onclick="openLightbox('casa',8)">
+        <img src="fotos/casa/c16c8317-55d9-4328-bf8b-48bcd28b7441.jpg" alt="Casa Principal" loading="lazy">
+        <div class="g-cap">Área Interna</div>
+      </div>
+      <div class="g-item" onclick="openLightbox('casa',9)">
+        <img src="fotos/casa/d35dabf8-178a-43c3-96a9-de8ba717ee95.jpg" alt="Casa Principal" loading="lazy">
+        <div class="g-cap">Detalhes</div>
+      </div>
+      <div class="g-item" onclick="openLightbox('casa',10)">
+        <img src="fotos/casa/d7cea144-26c5-4b05-bf12-b1c9ba76cb7c.jpg" alt="Casa Principal" loading="lazy">
+        <div class="g-cap">Ambiente</div>
+      </div>
+      <div class="g-item" onclick="openLightbox('casa',11)">
+        <img src="fotos/casa/dfe8a3ac-24d3-4c30-abd6-bdb2a02ef7d1.jpg" alt="Casa Principal" loading="lazy">
+        <div class="g-cap">Quarto</div>
+      </div>
+      <div class="g-item span2" onclick="openLightbox('casa',12)">
+        <img src="fotos/casa/e6f2a41a-3c04-4407-b259-de6d9096ebc1.jpg" alt="Casa Principal" loading="lazy">
+        <div class="g-cap">Vista Externa</div>
+      </div>
+      <div class="g-item" onclick="openLightbox('casa',13)">
+        <img src="fotos/casa/fcfa7090-fae3-4092-bb7e-30fefc234009.jpg" alt="Casa Principal" loading="lazy">
+        <div class="g-cap">Detalhes</div>
+      </div>
+      <div class="g-item" onclick="openLightbox('casa',14)">
+        <img src="fotos/casa/IMG_6449.jpg" alt="Casa Principal" loading="lazy">
+        <div class="g-cap">Ambiente</div>
+      </div>
+      <div class="g-item" onclick="openLightbox('casa',15)">
+        <img src="fotos/casa/IMG_6458.jpg" alt="Casa Principal" loading="lazy">
+        <div class="g-cap">Vista</div>
+      </div>
+      <div class="g-item" onclick="openLightbox('casa',16)">
+        <img src="fotos/casa/IMG_6463.jpg" alt="Casa Principal" loading="lazy">
+        <div class="g-cap">Detalhes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CHALÉ ==================== -->
+<section class="chale" id="chale">
+  <div class="container">
+    <p class="label">Estrutura 2</p>
+    <h2 class="title">O <em>Chalé</em> — 3 Andares</h2>
+    <div class="bar"></div>
+    <div class="chale-grid">
+      <div class="chale-text">
+        <p>O chalé é uma estrutura independente de alto charme, com 3 andares completamente equipados. Arquitetura em tijolo aparente, vigas de madeira e pedras brutas — rústica e acolhedora, perfeita para grupos.</p>
+        <div class="floor-card">
+          <h4>1º Andar — Cozinha &amp; Adega</h4>
+          <p>Cozinha rústica com mesa de madeira maciça para grandes grupos, armários de demolição e adega completa.</p>
+        </div>
+        <div class="floor-card">
+          <h4>2º Andar — Sala com Lareira &amp; Quartos</h4>
+          <p>Sala com lareira de pedra e TV. Quarto com 3 camas + banheiro. Quarto com 2 camas + banheiro.</p>
+        </div>
+        <div class="floor-card">
+          <h4>3º Andar — Suíte &amp; Dormitório</h4>
+          <p>Suíte casal com banheiro privativo. Dormitório com 8 camas — ideal para grupos ou eventos.</p>
+        </div>
+      </div>
+      <div class="chale-feat-grid">
+        <div class="g-item big" onclick="openLightbox('chale',0)">
+          <img src="fotos/chale/07e40dc7-5ca0-4a1c-97a3-87d0f1ae0aea.jpg" alt="Chalé" loading="lazy">
+        </div>
+        <div class="g-item" onclick="openLightbox('chale',1)">
+          <img src="fotos/chale/2a679ef9-b8ff-4f46-ad88-41146934e11f.jpg" alt="Chalé" loading="lazy">
+        </div>
+        <div class="g-item" onclick="openLightbox('chale',2)">
+          <img src="fotos/chale/2d8c3b01-158b-45f6-9876-ce83670c6ec1.jpg" alt="Chalé" loading="lazy">
+        </div>
+      </div>
+    </div>
+    <div class="chale-full-gallery">
+      <div class="gallery">
+        <div class="g-item span2" onclick="openLightbox('chale',3)">
+          <img src="fotos/chale/32fa8d06-19a2-4780-98a8-8a40f7a60eaf.jpg" alt="Chalé" loading="lazy">
+          <div class="g-cap">Chalé — Vista Interna</div>
+        </div>
+        <div class="g-item" onclick="openLightbox('chale',4)">
+          <img src="fotos/chale/52a513d6-e034-48ff-8ddf-fdc87195640b.jpg" alt="Chalé" loading="lazy">
+          <div class="g-cap">Chalé</div>
+        </div>
+        <div class="g-item" onclick="openLightbox('chale',5)">
+          <img src="fotos/chale/6cf7c772-735f-4f85-8316-9cb8c9112ee4.jpg" alt="Chalé" loading="lazy">
+          <div class="g-cap">Chalé</div>
+        </div>
+        <div class="g-item" onclick="openLightbox('chale',6)">
+          <img src="fotos/chale/832a2844-1059-42fd-a420-382806e4967e.jpg" alt="Chalé" loading="lazy">
+          <div class="g-cap">Ambiente</div>
+        </div>
+        <div class="g-item span2" onclick="openLightbox('chale',7)">
+          <img src="fotos/chale/8b3b3adc-c385-4a2a-a2b8-a03e36daf378.jpg" alt="Chalé" loading="lazy">
+          <div class="g-cap">Chalé — Área</div>
+        </div>
+        <div class="g-item" onclick="openLightbox('chale',8)">
+          <img src="fotos/chale/8bf118dc-06a1-4e48-8481-23af2c2fb977.jpg" alt="Chalé" loading="lazy">
+          <div class="g-cap">Chalé</div>
+        </div>
+        <div class="g-item" onclick="openLightbox('chale',9)">
+          <img src="fotos/chale/d89e0e7c-0b7b-445e-9654-c8f32dbc7353.jpg" alt="Chalé" loading="lazy">
+          <div class="g-cap">Chalé</div>
+        </div>
+        <div class="g-item" onclick="openLightbox('chale',10)">
+          <img src="fotos/chale/e8ade8a5-0cc8-4ea7-93c5-68c7f94059b3.jpg" alt="Chalé" loading="lazy">
+          <div class="g-cap">Chalé</div>
+        </div>
+        <div class="g-item span2" onclick="openLightbox('chale',11)">
+          <img src="fotos/chale/f56bff8d-8e1f-4306-ad4c-477158353ad9.jpg" alt="Chalé" loading="lazy">
+          <div class="g-cap">Chalé</div>
+        </div>
+        <div class="g-item" onclick="openLightbox('chale',12)">
+          <img src="fotos/chale/IMG_3038.PNG" alt="Chalé" loading="lazy">
+          <div class="g-cap">Chalé</div>
+        </div>
+        <div class="g-item" onclick="openLightbox('chale',13)">
+          <img src="fotos/chale/IMG_3039.PNG" alt="Chalé" loading="lazy">
+          <div class="g-cap">Chalé</div>
+        </div>
+        <div class="g-item" onclick="openLightbox('chale',14)">
+          <img src="fotos/chale/IMG_3040.PNG" alt="Chalé" loading="lazy">
+          <div class="g-cap">Chalé</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== LAZER ==================== -->
+<section class="lazer" id="lazer">
+  <div class="container">
+    <p class="label">Área de Lazer</p>
+    <h2 class="title">Diversão para<br><em>toda a família</em></h2>
+    <div class="bar"></div>
+    <div class="lazer-intro">
+      <div class="body-text">
+        <p>A área de lazer é um dos grandes diferenciais do Sítio Tonho do Lapa. Com infraestrutura completa, a propriedade oferece entretenimento para todas as idades — seja para um fim de semana em família ou uma temporada longa com amigos.</p>
+        <p>Piscina, campo de futebol, sinuca profissional, churrasqueira coberta e uma lagoinha natural tornam cada visita uma experiência única e inesquecível.</p>
+      </div>
+      <div class="img-frame">
+        <img src="fotos/lazer/82cd0890-b92c-4da1-a876-355c97fff079.jpg" alt="Área de Lazer" loading="lazy">
+      </div>
+    </div>
+    <div class="lazer-features">
+      <div class="feat-card">
+        <span class="feat-icon">🏊</span>
+        <h4>Piscina</h4>
+        <p>Piscina ampla integrada à área externa, com espaço para descanso e muito verde ao redor.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">⚽</span>
+        <h4>Campo de Futebol</h4>
+        <p>Campo gramado de tamanho oficial — perfeito para peladas, campeonatos e confraternizações.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🔥</span>
+        <h4>Churrasqueira</h4>
+        <p>Churrasqueira coberta com capacidade para grandes grupos, forno a lenha e área gourmet completa.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🎱</span>
+        <h4>Sinuca Profissional</h4>
+        <p>Mesa de sinuca profissional na casa principal — entretenimento de alto nível para qualquer hora.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🌊</span>
+        <h4>Lagoinha Natural</h4>
+        <p>Lagoinha natural no terreno — contato direto com a natureza e a biodiversidade local preservada.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🌳</span>
+        <h4>Jardins &amp; Paisagismo</h4>
+        <p>Buganvílias, palmeiras, flamboyants e espécies nativas cultivadas com décadas de dedicação.</p>
+      </div>
+    </div>
+    <div class="lazer-photos">
+      <div class="g-item" onclick="openLightbox('lazer',0)">
+        <img src="fotos/lazer/82cd0890-b92c-4da1-a876-355c97fff079.jpg" alt="Piscina e churrasqueira" loading="lazy">
+        <div class="g-cap">Piscina &amp; Churrasqueira</div>
+      </div>
+      <div class="g-item" onclick="openLightbox('lazer',1)">
+        <img src="fotos/lazer/a1290271-6e01-4ec5-9ef1-70c59890eef4.jpg" alt="Campo e área externa" loading="lazy">
+        <div class="g-cap">Campo &amp; Área Externa</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== NATUREZA ==================== -->
+<section class="natureza" id="natureza">
+  <div class="container">
+    <p class="label">Natureza &amp; Jardins</p>
+    <h2 class="title">Paisagens que<br><em>encantam</em></h2>
+    <div class="bar"></div>
+    <div class="nat-grid">
+      <div class="nat-item tall" onclick="openLightbox('natureza',0)">
+        <img src="fotos/natureza/2f10f371-0c5a-4073-88ed-fdebd513df2f.jpg" alt="Natureza" loading="lazy">
+        <div class="nat-cap">Natureza</div>
+      </div>
+      <div class="nat-item" onclick="openLightbox('natureza',1)">
+        <img src="fotos/natureza/4adda299-b817-41a3-9b12-32bc3d7207e2.jpg" alt="Jardins" loading="lazy">
+        <div class="nat-cap">Jardins</div>
+      </div>
+      <div class="nat-item" onclick="openLightbox('natureza',2)">
+        <img src="fotos/natureza/7acc9d6a-ba36-4baa-a919-1b0e03386cd5.jpg" alt="Paisagem" loading="lazy">
+        <div class="nat-cap">Paisagem</div>
+      </div>
+      <div class="nat-item" onclick="openLightbox('natureza',3)">
+        <img src="fotos/natureza/7bfe6b60-8e43-4347-8691-34677a768b12.jpg" alt="Jardins" loading="lazy">
+        <div class="nat-cap">Jardins</div>
+      </div>
+      <div class="nat-item tall" onclick="openLightbox('natureza',4)">
+        <img src="fotos/natureza/8b030bfd-5223-4991-a2bb-dc360bf16937.jpg" alt="Vista" loading="lazy">
+        <div class="nat-cap">Vista</div>
+      </div>
+      <div class="nat-item" onclick="openLightbox('natureza',5)">
+        <img src="fotos/natureza/8fc3568b-6712-40de-bad1-21ad146f0d10.jpg" alt="Flores" loading="lazy">
+        <div class="nat-cap">Flores</div>
+      </div>
+      <div class="nat-item" onclick="openLightbox('natureza',6)">
+        <img src="fotos/natureza/a97940dd-3ea3-417f-a516-f4da93162fd2.jpg" alt="Jardins" loading="lazy">
+        <div class="nat-cap">Jardins</div>
+      </div>
+      <div class="nat-item" onclick="openLightbox('natureza',7)">
+        <img src="fotos/natureza/f56c1716-b95d-4fe8-8921-7201b180b10f.jpg" alt="Paisagem" loading="lazy">
+        <div class="nat-cap">Paisagem</div>
+      </div>
+      <div class="nat-item" onclick="openLightbox('natureza',8)">
+        <img src="fotos/natureza/IMG_6459.jpg" alt="Vista" loading="lazy">
+        <div class="nat-cap">Vista</div>
+      </div>
+      <div class="nat-item tall" onclick="openLightbox('natureza',9)">
+        <img src="fotos/natureza/IMG_6631.jpg" alt="Paisagem" loading="lazy">
+        <div class="nat-cap">Paisagem</div>
+      </div>
+      <div class="nat-item" onclick="openLightbox('natureza',10)">
+        <img src="fotos/natureza/IMG_6635.jpg" alt="Natureza" loading="lazy">
+        <div class="nat-cap">Natureza</div>
+      </div>
+      <div class="nat-item" onclick="openLightbox('natureza',11)">
+        <img src="fotos/natureza/IMG_6652.jpg" alt="Vista" loading="lazy">
+        <div class="nat-cap">Vista</div>
+      </div>
+      <div class="nat-item" onclick="openLightbox('natureza',12)">
+        <img src="fotos/natureza/IMG_6658.jpg" alt="Jardins" loading="lazy">
+        <div class="nat-cap">Jardins</div>
+      </div>
+      <div class="nat-item" onclick="openLightbox('natureza',13)">
+        <img src="fotos/natureza/IMG_6660.jpg" alt="Paisagem" loading="lazy">
+        <div class="nat-cap">Paisagem</div>
+      </div>
+      <div class="nat-item tall" onclick="openLightbox('natureza',14)">
+        <img src="fotos/natureza/IMG_6671.jpg" alt="Natureza" loading="lazy">
+        <div class="nat-cap">Natureza</div>
+      </div>
+      <div class="nat-item" onclick="openLightbox('natureza',15)">
+        <img src="fotos/natureza/IMG_6673.jpg" alt="Vista" loading="lazy">
+        <div class="nat-cap">Vista</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CONTATO ==================== -->
+<section class="contato" id="contato">
+  <div class="container">
+    <p class="label">Entre em Contato</p>
+    <h2 class="title">Interesse em<br><em>conhecer o sítio?</em></h2>
+    <div class="bar" style="margin:1rem auto 0"></div>
+    <div class="contato-card">
+      <h3>Agende sua Visita</h3>
+      <p>Visitas com hora marcada mediante agendamento prévio. Entre em contato para informações sobre venda, aluguel ou estadia.</p>
+      <a href="https://wa.me/5531992027258?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20S%C3%ADtio%20Tonho%20do%20Lapa%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." class="btn-gold" target="_blank" rel="noopener">📱 Chamar no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© Sítio Tonho do Lapa · Moeda, Minas Gerais, Brasil</p>
+</footer>
+
+<!-- ==================== LIGHTBOX ==================== -->
+<div id="lightbox" role="dialog" aria-modal="true">
+  <button id="lb-close" onclick="closeLightbox()" aria-label="Fechar">✕</button>
+  <button id="lb-prev" onclick="lbNav(-1)" aria-label="Anterior">‹</button>
+  <img id="lb-img" src="" alt="">
+  <button id="lb-next" onclick="lbNav(1)" aria-label="Próxima">›</button>
+  <div id="lb-counter"></div>
+</div>
+
+<script>
+const galleries = {
+  casa: [
+    'fotos/casa/27891e2c-9293-4fab-97f8-33c7d47b07c4.jpg',
+    'fotos/casa/347c3e5c-0756-4567-a1e3-b0bce8b9500b.jpg',
+    'fotos/casa/34d18f3a-796e-4ab5-a4f6-a532975fc387.jpg',
+    'fotos/casa/4aba32c0-3d16-46b3-be0d-e90460c7222f.jpg',
+    'fotos/casa/7fb038b5-606e-47d9-a42d-9f3ad19a27b6.jpg',
+    'fotos/casa/8cc6f511-0796-4f9f-8081-8ea33dfc2d1a.jpg',
+    'fotos/casa/b07e9710-44c1-43a6-923f-9487afc82928.jpg',
+    'fotos/casa/b25126ce-bdc7-4189-a93b-7c65cea3f5a0.jpg',
+    'fotos/casa/c16c8317-55d9-4328-bf8b-48bcd28b7441.jpg',
+    'fotos/casa/d35dabf8-178a-43c3-96a9-de8ba717ee95.jpg',
+    'fotos/casa/d7cea144-26c5-4b05-bf12-b1c9ba76cb7c.jpg',
+    'fotos/casa/dfe8a3ac-24d3-4c30-abd6-bdb2a02ef7d1.jpg',
+    'fotos/casa/e6f2a41a-3c04-4407-b259-de6d9096ebc1.jpg',
+    'fotos/casa/fcfa7090-fae3-4092-bb7e-30fefc234009.jpg',
+    'fotos/casa/IMG_6449.jpg',
+    'fotos/casa/IMG_6458.jpg',
+    'fotos/casa/IMG_6463.jpg'
+  ],
+  chale: [
+    'fotos/chale/07e40dc7-5ca0-4a1c-97a3-87d0f1ae0aea.jpg',
+    'fotos/chale/2a679ef9-b8ff-4f46-ad88-41146934e11f.jpg',
+    'fotos/chale/2d8c3b01-158b-45f6-9876-ce83670c6ec1.jpg',
+    'fotos/chale/32fa8d06-19a2-4780-98a8-8a40f7a60eaf.jpg',
+    'fotos/chale/52a513d6-e034-48ff-8ddf-fdc87195640b.jpg',
+    'fotos/chale/6cf7c772-735f-4f85-8316-9cb8c9112ee4.jpg',
+    'fotos/chale/832a2844-1059-42fd-a420-382806e4967e.jpg',
+    'fotos/chale/8b3b3adc-c385-4a2a-a2b8-a03e36daf378.jpg',
+    'fotos/chale/8bf118dc-06a1-4e48-8481-23af2c2fb977.jpg',
+    'fotos/chale/d89e0e7c-0b7b-445e-9654-c8f32dbc7353.jpg',
+    'fotos/chale/e8ade8a5-0cc8-4ea7-93c5-68c7f94059b3.jpg',
+    'fotos/chale/f56bff8d-8e1f-4306-ad4c-477158353ad9.jpg',
+    'fotos/chale/IMG_3038.PNG',
+    'fotos/chale/IMG_3039.PNG',
+    'fotos/chale/IMG_3040.PNG'
+  ],
+  lazer: [
+    'fotos/lazer/82cd0890-b92c-4da1-a876-355c97fff079.jpg',
+    'fotos/lazer/a1290271-6e01-4ec5-9ef1-70c59890eef4.jpg'
+  ],
+  natureza: [
+    'fotos/natureza/2f10f371-0c5a-4073-88ed-fdebd513df2f.jpg',
+    'fotos/natureza/4adda299-b817-41a3-9b12-32bc3d7207e2.jpg',
+    'fotos/natureza/7acc9d6a-ba36-4baa-a919-1b0e03386cd5.jpg',
+    'fotos/natureza/7bfe6b60-8e43-4347-8691-34677a768b12.jpg',
+    'fotos/natureza/8b030bfd-5223-4991-a2bb-dc360bf16937.jpg',
+    'fotos/natureza/8fc3568b-6712-40de-bad1-21ad146f0d10.jpg',
+    'fotos/natureza/a97940dd-3ea3-417f-a516-f4da93162fd2.jpg',
+    'fotos/natureza/f56c1716-b95d-4fe8-8921-7201b180b10f.jpg',
+    'fotos/natureza/IMG_6459.jpg',
+    'fotos/natureza/IMG_6631.jpg',
+    'fotos/natureza/IMG_6635.jpg',
+    'fotos/natureza/IMG_6652.jpg',
+    'fotos/natureza/IMG_6658.jpg',
+    'fotos/natureza/IMG_6660.jpg',
+    'fotos/natureza/IMG_6671.jpg',
+    'fotos/natureza/IMG_6673.jpg'
+  ]
+};
+
+let currentGallery = null, currentIdx = 0;
+
+function openLightbox(gallery, idx) {
+  currentGallery = gallery;
+  currentIdx = idx;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function updateLightbox() {
+  const imgs = galleries[currentGallery];
+  document.getElementById('lb-img').src = imgs[currentIdx];
+  document.getElementById('lb-counter').textContent = (currentIdx + 1) + ' / ' + imgs.length;
+}
+
+function lbNav(dir) {
+  const imgs = galleries[currentGallery];
+  currentIdx = (currentIdx + dir + imgs.length) % imgs.length;
+  updateLightbox();
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.getElementById('lb-img').src = '';
+  document.body.style.overflow = '';
+}
+
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+
+document.addEventListener('keydown', function(e) {
+  if (!document.getElementById('lightbox').classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') lbNav(-1);
+  if (e.key === 'ArrowRight') lbNav(1);
+});
+
+// Swipe support for mobile
+let touchStartX = 0;
+document.getElementById('lightbox').addEventListener('touchstart', function(e) {
+  touchStartX = e.changedTouches[0].screenX;
+}, {passive: true});
+document.getElementById('lightbox').addEventListener('touchend', function(e) {
+  const dx = e.changedTouches[0].screenX - touchStartX;
+  if (Math.abs(dx) > 50) lbNav(dx < 0 ? 1 : -1);
+}, {passive: true});
+
+// Mobile menu
+document.getElementById('menuBtn').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+// Close mobile menu on link click
+document.querySelectorAll('.nav-links a').forEach(function(a) {
+  a.addEventListener('click', function() {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+</script>
+
+</body>
+</html>
